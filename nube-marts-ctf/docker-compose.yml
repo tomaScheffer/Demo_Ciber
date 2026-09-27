@@ -1,0 +1,40 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: nubemarts_frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - ctf_public
+    depends_on:
+      - backend
+    environment:
+      # NOTE: exposed to the browser bundle on purpose (OSINT surface)
+      - VITE_API_URL=http://localhost:8000
+
+  backend:
+    build: ./backend
+    container_name: nubemarts_backend
+    ports:
+      - "8000:8000"
+    networks:
+      - ctf_public
+      - ctf_internal
+
+  mock-imds:
+    build: ./mock-imds
+    container_name: nubemarts_imds
+    networks:
+      ctf_internal:
+        # Impersonate the AWS Instance Metadata Service link-local address.
+        ipv4_address: 169.254.169.254
+
+networks:
+  ctf_public:
+    driver: bridge
+  ctf_internal:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 169.254.169.0/24

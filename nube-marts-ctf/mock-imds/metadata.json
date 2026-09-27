@@ -1,0 +1,9 @@
+{
+  "Code": "Success",
+  "LastUpdated": "2026-09-26T12:00:00Z",
+  "Type": "AWS-HMAC",
+  "AccessKeyId": "ASIA5EXAMPLE7NUBEMART",
+  "SecretAccessKey": "FLAG{SSRF_c10ud_m3t4d4t4_h1j4ck}",
+  "Token": "IQoJb3JpZ2luX2VjEXAMPLEtokenFORnubemartsCTFlabONLY==",
+  "Expiration": "2026-09-26T18:00:00Z"
+}
